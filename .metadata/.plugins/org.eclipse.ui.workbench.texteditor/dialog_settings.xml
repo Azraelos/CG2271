@@ -2,15 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="Suspend" key="selection"/>
+		<item value="Counting" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="counting"/>
 			<item value="suspend"/>
 			<item value="semaphores"/>
-			<item value="counting"/>
 			<item value="use_mutex"/>
 			<item value="config"/>
 			<item value="mutex"/>

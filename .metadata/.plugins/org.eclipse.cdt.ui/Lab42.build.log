@@ -1,0 +1,22 @@
+12:58:53 **** Incremental Build of configuration Release for project Lab42 ****
+make all 
+arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
+arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Lab42.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:    6672 bytes (20.4% Full)
+(.text + .data + .bootloader)
+
+Data:       1944 bytes (94.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+12:58:53 Build Finished (took 340ms)
+

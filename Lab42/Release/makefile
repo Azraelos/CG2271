@@ -46,56 +46,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Project42.lss \
+Lab42.lss \
 
 FLASH_IMAGE += \
-Project42.hex \
+Lab42.hex \
 
 EEPROM_IMAGE += \
-Project42.eep \
+Lab42.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: Project42.elf secondary-outputs
+all: Lab42.elf secondary-outputs
 
 # Tool invocations
-Project42.elf: $(OBJS) $(USER_OBJS)
+Lab42.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,Project42.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Project42.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,Lab42.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab42.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Project42.lss: Project42.elf
+Lab42.lss: Lab42.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Project42.elf  >"Project42.lss"
+	-avr-objdump -h -S Lab42.elf  >"Lab42.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Project42.hex: Project42.elf
+Lab42.hex: Lab42.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Project42.elf  "Project42.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab42.elf  "Lab42.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Project42.eep: Project42.elf
+Lab42.eep: Lab42.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Project42.elf  "Project42.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab42.elf  "Lab42.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Project42.elf
+sizedummy: Lab42.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p Project42.elf
+	-avr-size --format=avr --mcu=atmega328p Lab42.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(C_UPPER_DEPS)$(S_DEPS)$(LSS)$(C_DEPS)$(FLASH_IMAGE)$(CC_DEPS)$(ELFS)$(C++_DEPS)$(OBJS)$(CXX_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(SIZEDUMMY)$(S_UPPER_DEPS)$(CPP_DEPS) Project42.elf
+	-$(RM) $(C_UPPER_DEPS)$(S_DEPS)$(LSS)$(C_DEPS)$(FLASH_IMAGE)$(CC_DEPS)$(ELFS)$(C++_DEPS)$(OBJS)$(CXX_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(SIZEDUMMY)$(S_UPPER_DEPS)$(CPP_DEPS) Lab42.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
