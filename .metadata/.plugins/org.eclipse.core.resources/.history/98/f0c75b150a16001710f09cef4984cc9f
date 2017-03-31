@@ -32,10 +32,10 @@ void task1(void *p) {
 		digitalWrite(LED_PIN_4, HIGH);
 		while (count < TASK_WCET) {
 			digitalWrite(LED_PIN, HIGH);
-			myDelay(50);
+			myDelay(500);
 			digitalWrite(LED_PIN, LOW);
-			myDelay(50);
-			count += 100;
+			myDelay(500);
+			count += 1000;
 		}
 		digitalWrite(LED_PIN_4, LOW);
 		xSemaphoreGive(xSemaphore);

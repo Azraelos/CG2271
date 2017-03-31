@@ -32,10 +32,10 @@ void task1(void *p) {
 		digitalWrite(LED_PIN_4, HIGH);
 		while (count < TASK_WCET) {
 			digitalWrite(LED_PIN, HIGH);
-			myDelay(50);
+			myDelay(500);
 			digitalWrite(LED_PIN, LOW);
-			myDelay(50);
-			count += 100;
+			myDelay(500);
+			count += 1000;
 		}
 		digitalWrite(LED_PIN_4, LOW);
 		xSemaphoreGive(xSemaphore);
@@ -51,10 +51,10 @@ void task2(void *p) {
 		int count2 = 0;
 		while (count2 < TASK2_WCET) {
 			digitalWrite(LED_PIN_2, HIGH);
-			myDelay(50);
+			myDelay(500);
 			digitalWrite(LED_PIN_2, LOW);
-			myDelay(50);
-			count2 += 100;
+			myDelay(500);
+			count2 += 1000;
 		}
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
@@ -70,10 +70,10 @@ void task3(void *p) {
 		digitalWrite(LED_PIN_4, HIGH);
 		while (count3 < TASK3_WCET) {
 			digitalWrite(LED_PIN_3, HIGH);
-			myDelay(50);
+			myDelay(500);
 			digitalWrite(LED_PIN_3, LOW);
-			myDelay(50);
-			count3 += 100;
+			myDelay(500);
+			count3 += 1000;
 		}
 		digitalWrite(LED_PIN_4, LOW);
 		xSemaphoreGive(xSemaphore);
@@ -87,7 +87,7 @@ void setup() {
 	pinMode(LED_PIN_2, OUTPUT);
 	pinMode(LED_PIN_3, OUTPUT);
 	pinMode(LED_PIN_4, OUTPUT);
-	xSemaphore = xSemaphoreCreateBinary();
+	xSemaphore = xSemaphoreCreateMutex();
 	xSemaphoreGive(xSemaphore);
 }
 

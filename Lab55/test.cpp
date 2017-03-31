@@ -38,7 +38,7 @@ void producer(void *p)
 
 void consumer(void *p)
 {
-	const TickType_t xFrequency = 3000;
+	const TickType_t xFrequency = 5000;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	while (1) {

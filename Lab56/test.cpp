@@ -47,7 +47,8 @@ void int0ISR() {
 		lastDebounceTime = debounceTime;
 		if (xQueue != 0) {
 			in = analogRead(PIN_PTTM);
-			xQueueSendToBack(xQueue, (void * ) &in, (TickType_t ) 2);
+			xQueueSendToBackFromISR(xQueue, (void * ) &in,
+					&xHigherPriorityTaskWoken);
 		}
 	}
 	if (xHigherPriorityTaskWoken == pdTRUE) {

@@ -11,13 +11,14 @@ SemaphoreHandle_t xSemaphore;
 SemaphoreHandle_t xSemaphore2;
 SemaphoreHandle_t xSemaphore3;
 
+QueueHandle_t xQueue;
+
 unsigned long debounceTime = 0;
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 200; // the debounce time; increase if the output flickers
 
 int in = 0;
 int out = 0;
-int buffer[4] = { 0 };
 
 void producer(void *p)
 {
@@ -25,8 +26,10 @@ void producer(void *p)
 		if (xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
 			xSemaphoreTake(xSemaphore3, portMAX_DELAY);
 			xSemaphoreTake(xSemaphore2, portMAX_DELAY);
-			buffer[in] = analogRead(PIN_PTTM);
-			in = (in + 1) % 4;
+			if (xQueue != 0) {
+				in = analogRead(PIN_PTTM);
+				xQueueSend(xQueue, (void * ) &in, (TickType_t ) 2);
+			}
 			xSemaphoreGive(xSemaphore2);
 			xSemaphoreGive(xSemaphore3);
 		}
@@ -35,14 +38,16 @@ void producer(void *p)
 
 void consumer(void *p)
 {
-	const TickType_t xFrequency = 5000;
+	const TickType_t xFrequency = 3000;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	while (1) {
 		xSemaphoreTake(xSemaphore3, portMAX_DELAY);
 		xSemaphoreTake(xSemaphore2, portMAX_DELAY);
-		Serial.println(buffer[out]);
-		out = (out + 1) % 4;
+		if (xQueue != 0) {
+			xQueueReceive(xQueue, &(out), (TickType_t ) 2);
+		}
+		Serial.println(out);
 		xSemaphoreGive(xSemaphore2);
 		xSemaphoreGive(xSemaphore3);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
@@ -70,6 +75,7 @@ void setup() {
 	xSemaphore2 = xSemaphoreCreateMutex();
 	xSemaphore3 = xSemaphoreCreateCounting(4, 4);
 	xSemaphoreGive(xSemaphore2);
+	xQueue = xQueueCreate(4, sizeof(int));
 }
 
 void loop() {
