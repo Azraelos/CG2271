@@ -29,15 +29,15 @@ void task1(void *p) {
 	for (;;) {
 		int count = 0;
 		xSemaphoreTake(xSemaphore, portMAX_DELAY);
-		digitalWrite(LED_PIN_4, HIGH);
 		while (count < TASK_WCET) {
 			digitalWrite(LED_PIN, HIGH);
+			digitalWrite(LED_PIN_4, HIGH);
 			myDelay(500);
 			digitalWrite(LED_PIN, LOW);
+			digitalWrite(LED_PIN_4, LOW);
 			myDelay(500);
 			count += 1000;
 		}
-		digitalWrite(LED_PIN_4, LOW);
 		xSemaphoreGive(xSemaphore);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
@@ -67,15 +67,15 @@ void task3(void *p) {
 	for (;;) {
 		int count3 = 0;
 		xSemaphoreTake(xSemaphore, portMAX_DELAY);
-		digitalWrite(LED_PIN_4, HIGH);
 		while (count3 < TASK3_WCET) {
 			digitalWrite(LED_PIN_3, HIGH);
+			digitalWrite(LED_PIN_4, HIGH);
 			myDelay(500);
 			digitalWrite(LED_PIN_3, LOW);
+			digitalWrite(LED_PIN_4, LOW);
 			myDelay(500);
 			count3 += 1000;
 		}
-		digitalWrite(LED_PIN_4, LOW);
 		xSemaphoreGive(xSemaphore);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
