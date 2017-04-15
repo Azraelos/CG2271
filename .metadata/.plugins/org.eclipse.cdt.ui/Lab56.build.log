@@ -1,4 +1,4 @@
-12:16:04 **** Build of configuration Release for project Lab56 ****
+12:56:19 **** Incremental Build of configuration Release for project Lab56 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -150,15 +150,15 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    9112 bytes (27.8% Full)
+Program:    9096 bytes (27.8% Full)
 (.text + .data + .bootloader)
 
-Data:       1967 bytes (96.0% Full)
+Data:       1965 bytes (95.9% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
 
-12:16:09 Build Finished (took 4s.651ms)
+12:56:23 Build Finished (took 4s.850ms)
 

@@ -46,56 +46,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Lab55.lss \
+Lab54.lss \
 
 FLASH_IMAGE += \
-Lab55.hex \
+Lab54.hex \
 
 EEPROM_IMAGE += \
-Lab55.eep \
+Lab54.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: Lab55.elf secondary-outputs
+all: Lab54.elf secondary-outputs
 
 # Tool invocations
-Lab55.elf: $(OBJS) $(USER_OBJS)
+Lab54.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,Lab55.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab55.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,Lab54.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab54.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Lab55.lss: Lab55.elf
+Lab54.lss: Lab54.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Lab55.elf  >"Lab55.lss"
+	-avr-objdump -h -S Lab54.elf  >"Lab54.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Lab55.hex: Lab55.elf
+Lab54.hex: Lab54.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab55.elf  "Lab55.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab54.elf  "Lab54.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Lab55.eep: Lab55.elf
+Lab54.eep: Lab54.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab55.elf  "Lab55.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab54.elf  "Lab54.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Lab55.elf
+sizedummy: Lab54.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p Lab55.elf
+	-avr-size --format=avr --mcu=atmega328p Lab54.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(C_UPPER_DEPS)$(S_DEPS)$(LSS)$(C_DEPS)$(FLASH_IMAGE)$(CC_DEPS)$(ELFS)$(C++_DEPS)$(OBJS)$(CXX_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(SIZEDUMMY)$(S_UPPER_DEPS)$(CPP_DEPS) Lab55.elf
+	-$(RM) $(C_UPPER_DEPS)$(S_DEPS)$(LSS)$(C_DEPS)$(FLASH_IMAGE)$(CC_DEPS)$(ELFS)$(C++_DEPS)$(OBJS)$(CXX_DEPS)$(ASM_DEPS)$(EEPROM_IMAGE)$(SIZEDUMMY)$(S_UPPER_DEPS)$(CPP_DEPS) Lab54.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)

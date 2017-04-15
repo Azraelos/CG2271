@@ -221,6 +221,8 @@ Discarded input sections
                 0x00000000       0x24 ./arduino/Print.o
  .text._ZN5Print7printlnERK6String
                 0x00000000       0x24 ./arduino/Print.o
+ .text._ZN5Print7printlnEPKc
+                0x00000000       0x24 ./arduino/Print.o
  .text._ZN5Print7printlnEc
                 0x00000000       0x24 ./arduino/Print.o
  .text._ZN5Print7printlnERK9Printable
@@ -1218,7 +1220,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x244c
+.text           0x00000000     0x2422
  *(.vectors)
  .vectors       0x00000000       0x68 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -1367,214 +1369,211 @@ END GROUP
  .text._ZN5Print7printlnEv
                 0x00000590        0x6 ./arduino/Print.o
                 0x00000590                _ZN5Print7printlnEv
- .text._ZN5Print7printlnEPKc
-                0x00000596       0x20 ./arduino/Print.o
-                0x00000596                _ZN5Print7printlnEPKc
  .text._ZN5Print11printNumberEmh
-                0x000005b6       0xa6 ./arduino/Print.o
-                0x000005b6                _ZN5Print11printNumberEmh
+                0x00000596       0xa6 ./arduino/Print.o
+                0x00000596                _ZN5Print11printNumberEmh
  .text._ZN5Print5printEli
-                0x0000065c       0x8e ./arduino/Print.o
-                0x0000065c                _ZN5Print5printEli
+                0x0000063c       0x8e ./arduino/Print.o
+                0x0000063c                _ZN5Print5printEli
  .text._ZN5Print7printlnEii
-                0x000006ea       0x2a ./arduino/Print.o
-                0x000006ea                _ZN5Print7printlnEii
+                0x000006ca       0x2a ./arduino/Print.o
+                0x000006ca                _ZN5Print7printlnEii
  .text._ZN5Print5printEmi
-                0x00000714       0x18 ./arduino/Print.o
-                0x00000714                _ZN5Print5printEmi
+                0x000006f4       0x18 ./arduino/Print.o
+                0x000006f4                _ZN5Print5printEmi
  .text._ZN5Print5printEhi
-                0x0000072c        0xc ./arduino/Print.o
-                0x0000072c                _ZN5Print5printEhi
+                0x0000070c        0xc ./arduino/Print.o
+                0x0000070c                _ZN5Print5printEhi
  .text._Z12disableTimerh
-                0x00000738       0x40 ./arduino/Tone.o
-                0x00000738                _Z12disableTimerh
+                0x00000718       0x40 ./arduino/Tone.o
+                0x00000718                _Z12disableTimerh
  .text._Z6noToneh
-                0x00000778       0x28 ./arduino/Tone.o
-                0x00000778                _Z6noToneh
+                0x00000758       0x28 ./arduino/Tone.o
+                0x00000758                _Z6noToneh
  .text.__vector_7
-                0x000007a0       0xb6 ./arduino/Tone.o
-                0x000007a0                __vector_7
- .text.nothing  0x00000856        0x2 ./arduino/WInterrupts.o
+                0x00000780       0xb6 ./arduino/Tone.o
+                0x00000780                __vector_7
+ .text.nothing  0x00000836        0x2 ./arduino/WInterrupts.o
  .text.attachInterrupt
-                0x00000858       0x40 ./arduino/WInterrupts.o
-                0x00000858                attachInterrupt
+                0x00000838       0x40 ./arduino/WInterrupts.o
+                0x00000838                attachInterrupt
  .text.__vector_1
-                0x00000898       0x4e ./arduino/WInterrupts.o
-                0x00000898                __vector_1
+                0x00000878       0x4e ./arduino/WInterrupts.o
+                0x00000878                __vector_1
  .text.__vector_2
-                0x000008e6       0x4e ./arduino/WInterrupts.o
-                0x000008e6                __vector_2
+                0x000008c6       0x4e ./arduino/WInterrupts.o
+                0x000008c6                __vector_2
  .text.initVariant
-                0x00000934        0x2 ./arduino/main.o
-                0x00000934                initVariant
+                0x00000914        0x2 ./arduino/main.o
+                0x00000914                initVariant
  .text.startup.main
-                0x00000936       0x14 ./arduino/main.o
-                0x00000936                main
+                0x00000916       0x14 ./arduino/main.o
+                0x00000916                main
  .text.__vector_16
-                0x0000094a       0x94 ./arduino/wiring.o
-                0x0000094a                __vector_16
- .text.millis   0x000009de       0x18 ./arduino/wiring.o
-                0x000009de                millis
- .text.init     0x000009f6       0x76 ./arduino/wiring.o
-                0x000009f6                init
+                0x0000092a       0x94 ./arduino/wiring.o
+                0x0000092a                __vector_16
+ .text.millis   0x000009be       0x18 ./arduino/wiring.o
+                0x000009be                millis
+ .text.init     0x000009d6       0x76 ./arduino/wiring.o
+                0x000009d6                init
  .text.analogRead
-                0x00000a6c       0x3a ./arduino/wiring_analog.o
-                0x00000a6c                analogRead
+                0x00000a4c       0x3a ./arduino/wiring_analog.o
+                0x00000a4c                analogRead
  .text.turnOffPWM
-                0x00000aa6       0x52 ./arduino/wiring_digital.o
+                0x00000a86       0x52 ./arduino/wiring_digital.o
  .text.digitalWrite
-                0x00000af8       0x5e ./arduino/wiring_digital.o
-                0x00000af8                digitalWrite
+                0x00000ad8       0x5e ./arduino/wiring_digital.o
+                0x00000ad8                digitalWrite
  .text._Z8producerPv
-                0x00000b56       0xa2 ./test.o
-                0x00000b56                _Z8producerPv
+                0x00000b36       0xa2 ./test.o
+                0x00000b36                _Z8producerPv
  .text._Z8consumerPv
-                0x00000bf8       0xb4 ./test.o
-                0x00000bf8                _Z8consumerPv
+                0x00000bd8       0xb4 ./test.o
+                0x00000bd8                _Z8consumerPv
  .text._Z7int0ISRv
-                0x00000cac       0x8e ./test.o
-                0x00000cac                _Z7int0ISRv
- .text.setup    0x00000d3a       0x62 ./test.o
-                0x00000d3a                setup
- .text.loop     0x00000d9c       0x5a ./test.o
-                0x00000d9c                loop
+                0x00000c8c       0x8e ./test.o
+                0x00000c8c                _Z7int0ISRv
+ .text.setup    0x00000d1a       0x62 ./test.o
+                0x00000d1a                setup
+ .text.loop     0x00000d7c       0x50 ./test.o
+                0x00000d7c                loop
  .text.pxPortInitialiseStack
-                0x00000df6       0xd8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
-                0x00000df6                pxPortInitialiseStack
+                0x00000dcc       0xd8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
+                0x00000dcc                pxPortInitialiseStack
  .text.xPortStartScheduler
-                0x00000ece       0x76 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
-                0x00000ece                xPortStartScheduler
+                0x00000ea4       0x76 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
+                0x00000ea4                xPortStartScheduler
  .text.vPortYield
-                0x00000f44       0xb0 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
-                0x00000f44                vPortYield
+                0x00000f1a       0xb0 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
+                0x00000f1a                vPortYield
  .text.vPortYieldFromTick
-                0x00000ff4       0xb4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
-                0x00000ff4                vPortYieldFromTick
+                0x00000fca       0xb4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
+                0x00000fca                vPortYieldFromTick
  .text.__vector_11
-                0x000010a8        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
-                0x000010a8                __vector_11
+                0x0000107e        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(port.o)
+                0x0000107e                __vector_11
  .text.prvCopyDataToQueue
-                0x000010ac       0xac C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x00001082       0xac C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
  .text.prvCopyDataFromQueue
-                0x00001158       0x34 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x0000112e       0x34 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
  .text.prvUnlockQueue
-                0x0000118c       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x00001162       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
  .text.xQueueGenericReset
-                0x00001200       0x6e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x00001200                xQueueGenericReset
+                0x000011d6       0x6e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x000011d6                xQueueGenericReset
  .text.xQueueGenericCreate
-                0x0000126e       0x64 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x0000126e                xQueueGenericCreate
+                0x00001244       0x64 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x00001244                xQueueGenericCreate
  .text.xQueueCreateCountingSemaphore
-                0x000012d2       0x16 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x000012d2                xQueueCreateCountingSemaphore
+                0x000012a8       0x16 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x000012a8                xQueueCreateCountingSemaphore
  .text.xQueueGenericSend
-                0x000012e8      0x12c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x000012e8                xQueueGenericSend
+                0x000012be      0x12c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x000012be                xQueueGenericSend
  .text.xQueueCreateMutex
-                0x00001414       0x56 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x00001414                xQueueCreateMutex
+                0x000013ea       0x56 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x000013ea                xQueueCreateMutex
  .text.xQueueGiveFromISR
-                0x0000146a       0x48 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x0000146a                xQueueGiveFromISR
+                0x00001440       0x48 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x00001440                xQueueGiveFromISR
  .text.xQueueGenericReceive
-                0x000014b2      0x16a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
-                0x000014b2                xQueueGenericReceive
+                0x00001488      0x16a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(queue.o)
+                0x00001488                xQueueGenericReceive
  .text.prvResetNextTaskUnblockTime
-                0x0000161c       0x44 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x000015f2       0x44 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .text.prvAddCurrentTaskToDelayedList
-                0x00001660       0x9e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001636       0x9e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .text.xTaskGenericCreate
-                0x000016fe      0x1f0 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x000016fe                xTaskGenericCreate
+                0x000016d4      0x1f0 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x000016d4                xTaskGenericCreate
  .text.vTaskStartScheduler
-                0x000018ee       0x7e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x000018ee                vTaskStartScheduler
+                0x000018c4       0x7e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x000018c4                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x0000196c        0xc C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x0000196c                vTaskSuspendAll
+                0x00001942        0xc C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001942                vTaskSuspendAll
  .text.xTaskGetTickCount
-                0x00001978       0x1c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001978                xTaskGetTickCount
+                0x0000194e       0x1c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0000194e                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x00001994      0x19a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001994                xTaskIncrementTick
+                0x0000196a      0x19a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0000196a                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x00001b2e       0xd6 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001b2e                xTaskResumeAll
+                0x00001b04       0xd6 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001b04                xTaskResumeAll
  .text.vTaskDelayUntil
-                0x00001c04       0xce C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001c04                vTaskDelayUntil
+                0x00001bda       0xce C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001bda                vTaskDelayUntil
  .text.prvIdleTask
-                0x00001cd2       0x5c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001ca8       0x5c C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .text.vTaskSwitchContext
-                0x00001d2e       0x98 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001d2e                vTaskSwitchContext
+                0x00001d04       0x98 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001d04                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x00001dc6       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001dc6                vTaskPlaceOnEventList
+                0x00001d9c       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001d9c                vTaskPlaceOnEventList
  .text.xTaskRemoveFromEventList
-                0x00001e3a       0x7a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001e3a                xTaskRemoveFromEventList
+                0x00001e10       0x7a C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001e10                xTaskRemoveFromEventList
  .text.vTaskSetTimeOutState
-                0x00001eb4       0x22 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001eb4                vTaskSetTimeOutState
+                0x00001e8a       0x22 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001e8a                vTaskSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x00001ed6       0xb6 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001ed6                xTaskCheckForTimeOut
+                0x00001eac       0xb6 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001eac                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x00001f8c        0x8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001f8c                vTaskMissedYield
+                0x00001f62        0x8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001f62                vTaskMissedYield
  .text.vTaskPriorityInherit
-                0x00001f94       0xbe C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00001f94                vTaskPriorityInherit
+                0x00001f6a       0xbe C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00001f6a                vTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x00002052       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x00002052                xTaskPriorityDisinherit
+                0x00002028       0x74 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00002028                xTaskPriorityDisinherit
  .text.pvTaskIncrementMutexHeldCount
-                0x000020c6       0x24 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x000020c6                pvTaskIncrementMutexHeldCount
+                0x0000209c       0x24 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0000209c                pvTaskIncrementMutexHeldCount
  .text.pvPortMalloc
-                0x000020ea      0x120 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
-                0x000020ea                pvPortMalloc
+                0x000020c0      0x120 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+                0x000020c0                pvPortMalloc
  .text.vPortFree
-                0x0000220a       0x54 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
-                0x0000220a                vPortFree
+                0x000021e0       0x54 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+                0x000021e0                vPortFree
  .text.vListInitialise
-                0x0000225e       0x22 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
-                0x0000225e                vListInitialise
+                0x00002234       0x22 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
+                0x00002234                vListInitialise
  .text.vListInitialiseItem
-                0x00002280        0x8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
-                0x00002280                vListInitialiseItem
+                0x00002256        0x8 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
+                0x00002256                vListInitialiseItem
  .text.vListInsertEnd
-                0x00002288       0x42 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
-                0x00002288                vListInsertEnd
+                0x0000225e       0x42 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
+                0x0000225e                vListInsertEnd
  .text.vListInsert
-                0x000022ca       0x88 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
-                0x000022ca                vListInsert
+                0x000022a0       0x88 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
+                0x000022a0                vListInsert
  .text.uxListRemove
-                0x00002352       0x46 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
-                0x00002352                uxListRemove
+                0x00002328       0x46 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(list.o)
+                0x00002328                uxListRemove
  .text.libgcc.div
-                0x00002398       0x26 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_divmodhi4.o)
-                0x00002398                _div
-                0x00002398                __divmodhi4
+                0x0000236e       0x26 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_divmodhi4.o)
+                0x0000236e                _div
+                0x0000236e                __divmodhi4
  .text.libgcc.div
-                0x000023be       0x44 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
-                0x000023be                __udivmodsi4
+                0x00002394       0x44 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x00002394                __udivmodsi4
  .text.libgcc.div
-                0x00002402       0x28 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodhi4.o)
-                0x00002402                __udivmodhi4
- .text.libgcc   0x0000242a        0xc c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
-                0x0000242a                __tablejump2__
+                0x000023d8       0x28 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_udivmodhi4.o)
+                0x000023d8                __udivmodhi4
+ .text.libgcc   0x00002400        0xc c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_tablejump2.o)
+                0x00002400                __tablejump2__
  .text.avr-libc
-                0x00002436       0x12 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libc.a(memcpy.o)
-                0x00002436                memcpy
-                0x00002448                . = ALIGN (0x2)
+                0x0000240c       0x12 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x0000240c                memcpy
+                0x0000241e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002448        0x0 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
-                0x00002448                _exit
-                0x00002448                exit
+ .fini9         0x0000241e        0x0 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x0000241e                _exit
+                0x0000241e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1593,11 +1592,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002448        0x4 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000241e        0x4 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000244c                _etext = .
+                0x00002422                _etext = .
 
-.data           0x00800100       0x52 load address 0x0000244c
+.data           0x00800100       0x4c load address 0x00002422
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files (x86)/arduino/hardware/tools/avr/bin/../lib/gcc/avr/4.9.2/../../../../avr/lib/avr5/crtatmega328p.o
@@ -1730,120 +1729,119 @@ END GROUP
  .rodata.str1.1
                 0x0080012c        0xf ./arduino/Print.o
  .rodata.str1.1
-                0x0080013b       0x11 ./test.o
+                0x0080013b        0xc ./test.o
  .rodata.str1.1
-                0x0080014c        0x5 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800147        0x5 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  *(.gnu.linkonce.d*)
-                0x00800152                . = ALIGN (0x2)
- *fill*         0x00800151        0x1 
-                0x00800152                _edata = .
-                0x00800152                PROVIDE (__data_end, .)
+                0x0080014c                . = ALIGN (0x2)
+                0x0080014c                _edata = .
+                0x0080014c                PROVIDE (__data_end, .)
 
-.bss            0x00800152      0x76f
-                0x00800152                PROVIDE (__bss_start, .)
+.bss            0x0080014c      0x76f
+                0x0080014c                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.Serial    0x00800152       0x9d ./arduino/HardwareSerial0.o
-                0x00800152                Serial
+ .bss.Serial    0x0080014c       0x9d ./arduino/HardwareSerial0.o
+                0x0080014c                Serial
  .bss._ZL11INADDR_NONE
-                0x008001ef        0x6 ./arduino/IPAddress.o
+                0x008001e9        0x6 ./arduino/IPAddress.o
  .bss.timer2_pin_mask
-                0x008001f5        0x1 ./arduino/Tone.o
-                0x008001f5                timer2_pin_mask
+                0x008001ef        0x1 ./arduino/Tone.o
+                0x008001ef                timer2_pin_mask
  .bss.timer2_pin_port
-                0x008001f6        0x2 ./arduino/Tone.o
-                0x008001f6                timer2_pin_port
+                0x008001f0        0x2 ./arduino/Tone.o
+                0x008001f0                timer2_pin_port
  .bss.timer2_toggle_count
-                0x008001f8        0x4 ./arduino/Tone.o
-                0x008001f8                timer2_toggle_count
+                0x008001f2        0x4 ./arduino/Tone.o
+                0x008001f2                timer2_toggle_count
  .bss.timer0_fract
-                0x008001fc        0x1 ./arduino/wiring.o
+                0x008001f6        0x1 ./arduino/wiring.o
  .bss.timer0_millis
-                0x008001fd        0x4 ./arduino/wiring.o
-                0x008001fd                timer0_millis
+                0x008001f7        0x4 ./arduino/wiring.o
+                0x008001f7                timer0_millis
  .bss.timer0_overflow_count
-                0x00800201        0x4 ./arduino/wiring.o
-                0x00800201                timer0_overflow_count
+                0x008001fb        0x4 ./arduino/wiring.o
+                0x008001fb                timer0_overflow_count
  .bss._ZZ7int0ISRvE24xHigherPriorityTaskWoken
-                0x00800205        0x1 ./test.o
- .bss.buffer    0x00800206        0x8 ./test.o
-                0x00800206                buffer
- .bss.out       0x0080020e        0x2 ./test.o
-                0x0080020e                out
- .bss.in        0x00800210        0x2 ./test.o
-                0x00800210                in
+                0x008001ff        0x1 ./test.o
+ .bss.buffer    0x00800200        0x8 ./test.o
+                0x00800200                buffer
+ .bss.out       0x00800208        0x2 ./test.o
+                0x00800208                out
+ .bss.in        0x0080020a        0x2 ./test.o
+                0x0080020a                in
  .bss.lastDebounceTime
-                0x00800212        0x4 ./test.o
-                0x00800212                lastDebounceTime
+                0x0080020c        0x4 ./test.o
+                0x0080020c                lastDebounceTime
  .bss.debounceTime
-                0x00800216        0x4 ./test.o
-                0x00800216                debounceTime
+                0x00800210        0x4 ./test.o
+                0x00800210                debounceTime
  .bss.xSemaphore3
-                0x0080021a        0x2 ./test.o
-                0x0080021a                xSemaphore3
+                0x00800214        0x2 ./test.o
+                0x00800214                xSemaphore3
  .bss.xSemaphore2
-                0x0080021c        0x2 ./test.o
-                0x0080021c                xSemaphore2
+                0x00800216        0x2 ./test.o
+                0x00800216                xSemaphore2
  .bss.xSemaphore
-                0x0080021e        0x2 ./test.o
-                0x0080021e                xSemaphore
+                0x00800218        0x2 ./test.o
+                0x00800218                xSemaphore
  .bss.uxSchedulerSuspended
-                0x00800220        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080021a        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xNextTaskUnblockTime
-                0x00800221        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080021b        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.uxTaskNumber
-                0x00800225        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080021f        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xNumOfOverflows
-                0x00800226        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800220        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xYieldPending
-                0x00800227        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800221        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.uxPendedTicks
-                0x00800228        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800222        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xSchedulerRunning
-                0x00800229        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800223        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.uxTopReadyPriority
-                0x0080022a        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800224        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xTickCount
-                0x0080022b        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800225        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.uxCurrentNumberOfTasks
-                0x0080022f        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800229        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xSuspendedTaskList
-                0x00800230        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080022a        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.uxTasksDeleted
-                0x0080023b        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800235        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xTasksWaitingTermination
-                0x0080023c        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800236        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xPendingReadyList
-                0x00800247        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800241        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.pxOverflowDelayedTaskList
-                0x00800252        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080024c        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.pxDelayedTaskList
-                0x00800254        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080024e        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xDelayedTaskList2
-                0x00800256        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800250        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.xDelayedTaskList1
-                0x00800261        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x0080025b        0xb C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.pxReadyTasksLists
-                0x0080026c       0x6e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x00800266       0x6e C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
  .bss.pxCurrentTCB
-                0x008002da        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
-                0x008002da                pxCurrentTCB
+                0x008002d4        0x2 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(tasks.o)
+                0x008002d4                pxCurrentTCB
  .bss.xHeapHasBeenInitialised.1907
-                0x008002dc        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
- .bss.xEnd      0x008002dd        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
- .bss.xStart    0x008002e1        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
- .bss.ucHeap    0x008002e5      0x5dc C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+                0x008002d6        0x1 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+ .bss.xEnd      0x008002d7        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+ .bss.xStart    0x008002db        0x4 C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
+ .bss.ucHeap    0x008002df      0x5dc C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a(heap_2.o)
  *(COMMON)
-                0x008008c1                PROVIDE (__bss_end, .)
-                0x0000244c                __data_load_start = LOADADDR (.data)
-                0x0000249e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008008bb                PROVIDE (__bss_end, .)
+                0x00002422                __data_load_start = LOADADDR (.data)
+                0x0000246e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008008c1        0x0
-                0x008008c1                PROVIDE (__noinit_start, .)
+.noinit         0x008008bb        0x0
+                0x008008bb                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008008c1                PROVIDE (__noinit_end, .)
-                0x008008c1                _end = .
-                0x008008c1                PROVIDE (__heap_start, .)
+                0x008008bb                PROVIDE (__noinit_end, .)
+                0x008008bb                _end = .
+                0x008008bb                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -2049,7 +2047,6 @@ _ZN5Print5writeEPKhj                              ./arduino/Print.o
                                                   ./arduino/HardwareSerial.o
 _ZN5Print7printlnEPK19__FlashStringHelper         ./arduino/Print.o
 _ZN5Print7printlnEPKc                             ./arduino/Print.o
-                                                  ./test.o
 _ZN5Print7printlnERK6String                       ./arduino/Print.o
 _ZN5Print7printlnERK9Printable                    ./arduino/Print.o
 _ZN5Print7printlnEc                               ./arduino/Print.o

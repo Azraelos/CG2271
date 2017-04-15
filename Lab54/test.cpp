@@ -8,8 +8,8 @@
 #define PIN_PTTM  0
 
 SemaphoreHandle_t xSemaphore;
-SemaphoreHandle_t xSemaphore2;
-SemaphoreHandle_t xSemaphore3;
+SemaphoreHandle_t xFull;
+SemaphoreHandle_t xEmpty;
 
 unsigned long debounceTime = 0;
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
@@ -23,12 +23,10 @@ void producer(void *p)
 {
 	while (1) {
 		if (xSemaphoreTake(xSemaphore, portMAX_DELAY) == pdTRUE) {
-			xSemaphoreTake(xSemaphore3, portMAX_DELAY);
-			xSemaphoreTake(xSemaphore2, portMAX_DELAY);
+			xSemaphoreTake(xEmpty, portMAX_DELAY);
 			buffer[in] = analogRead(PIN_PTTM);
 			in = (in + 1) % 4;
-			xSemaphoreGive(xSemaphore2);
-			xSemaphoreGive(xSemaphore3);
+			xSemaphoreGive(xFull);
 		}
 	}
 }
@@ -39,12 +37,10 @@ void consumer(void *p)
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	while (1) {
-		xSemaphoreTake(xSemaphore3, portMAX_DELAY);
-		xSemaphoreTake(xSemaphore2, portMAX_DELAY);
+		xSemaphoreTake(xFull, portMAX_DELAY);
 		Serial.println(buffer[out]);
 		out = (out + 1) % 4;
-		xSemaphoreGive(xSemaphore2);
-		xSemaphoreGive(xSemaphore3);
+		xSemaphoreGive(xEmpty);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
 }
@@ -67,9 +63,8 @@ void setup() {
 	Serial.begin(115200);
 	attachInterrupt(digitalPinToInterrupt(2), int0ISR, RISING);
 	xSemaphore = xSemaphoreCreateBinary();
-	xSemaphore2 = xSemaphoreCreateMutex();
-	xSemaphore3 = xSemaphoreCreateCounting(4, 4);
-	xSemaphoreGive(xSemaphore2);
+	xFull = xSemaphoreCreateCounting(4, 0);
+	xEmpty = xSemaphoreCreateCounting(4, 4);
 }
 
 void loop() {

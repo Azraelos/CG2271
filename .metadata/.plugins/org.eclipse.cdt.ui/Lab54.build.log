@@ -1,4 +1,4 @@
-12:10:05 **** Incremental Build of configuration Release for project Lab54 ****
+12:57:36 **** Build of configuration Release for project Lab54 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -125,40 +125,15 @@ Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/ard
 Building file: ../test.cpp
 Invoking: AVR C++ Compiler
 avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab55.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab55.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab55.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab55.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab55.elf  >"Lab55.lss"
-Finished building: Lab55.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab55.elf  "Lab55.hex"
-Finished building: Lab55.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab55.elf  "Lab55.eep"
-Finished building: Lab55.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab55.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
+In file included from ../test.cpp:5:0:
+../test.cpp: In function 'void setup()':
+../test.cpp:68:17: error: 'xSemaphore2' was not declared in this scope
+  xSemaphoreGive(xSemaphore2);
+                 ^
+C:\Users\Andrew\workspace_c++\freeRTOS\Source\include/semphr.h:423:78: note: in definition of macro 'xSemaphoreGive'
+ #define xSemaphoreGive( xSemaphore )  xQueueGenericSend( ( QueueHandle_t ) ( xSemaphore ), NULL, semGIVE_BLOCK_TIME, queueSEND_TO_BACK )
+                                                                              ^
+make: *** [test.o] Error 1
 
-Program:    9374 bytes (28.6% Full)
-(.text + .data + .bootloader)
-
-Data:       1985 bytes (96.9% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-
-12:10:10 Build Finished (took 4s.704ms)
+12:57:40 Build Finished (took 3s.954ms)
 

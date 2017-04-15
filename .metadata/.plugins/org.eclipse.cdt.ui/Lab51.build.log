@@ -1,4 +1,4 @@
-13:07:37 **** Incremental Build of configuration Release for project Lab51 ****
+12:56:02 **** Incremental Build of configuration Release for project Lab51 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -18,5 +18,5 @@ Data:       1956 bytes (95.5% Full)
 Finished building: sizedummy
  
 
-13:07:37 Build Finished (took 352ms)
+12:56:02 Build Finished (took 334ms)
 
