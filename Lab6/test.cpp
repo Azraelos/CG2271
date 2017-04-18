@@ -4,7 +4,7 @@
 #include <task.h>
 #include <semphr.h>
 
-#define STACK_SIZE 100
+#define STACK_SIZE 200
 #define PIN_PTTM     0
 #define LED_PIN      6
 #define LED_PIN_2    7
@@ -23,15 +23,11 @@ unsigned long debounceDelay = 200; // the debounce time; increase if the output 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long lastDebounceTime2 = 0; // the last time the output pin was toggled
 
-int speed = 0;
-int safe_speed = 0;
-int pttm_reading = 0;
-
 void buzzer(void *p) {
-	const TickType_t xFrequency0 = 3.830;
-	const TickType_t xFrequency1 = 3.400;
-	const TickType_t xFrequency2 = 3.038;
-	const TickType_t xFrequency3 = 2.864;
+	const TickType_t xFrequency0 = 2;
+	const TickType_t xFrequency1 = 4;
+	const TickType_t xFrequency2 = 6;
+	const TickType_t xFrequency3 = 8;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 	int buzzSpeed;
 
@@ -102,9 +98,23 @@ void setLed(int lightSpeed) {
 	}
 }
 
+void automatedBrake(int flag) {
+	switch (flag) {
+	case (1): {
+		digitalWrite(LED_PIN_4, HIGH);
+		break;
+	}
+	case (0): {
+		digitalWrite(LED_PIN_4, LOW);
+		break;
+	}
+	}
+}
+
 void potentiometer(void *p) {
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
+	int pttm_reading = 0;
 
 	for (;;) {
 		pttm_reading = analogRead(PIN_PTTM) / 256;
@@ -112,20 +122,19 @@ void potentiometer(void *p) {
 			xQueueSend(xPTTM, (void * ) &pttm_reading,
 					(TickType_t ) portMAX_DELAY);
 		}
-		Serial.print("Safe Speed: ");
-		Serial.println(pttm_reading);
-		delay(50);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
 }
 
 void speed_controller(void *p) {
+	int speed = 0;
+	int safe_speed;
+	int autoBrake = 0;
 
-	const TickType_t xFrequency = 1100;
+	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	for (;;) {
-		xSemaphoreTake(xAccelerator, portMAX_DELAY);
 		if (xPTTM != 0) {
 			xQueueReceive(xPTTM, &(safe_speed), (TickType_t ) 0);
 		}
@@ -141,11 +150,10 @@ void speed_controller(void *p) {
 		if (xSemaphoreTake(xBrake, 0) == pdTRUE) {
 			if (speed > 0) {
 				speed--;
+				automatedBrake(autoBrake);
 			}
 		}
-		Serial.print("Speed: ");
-		Serial.println(speed);
-		delay(50);
+
 		if (xSpeed != 0) {
 			xQueueSend(xSpeed, (void * ) &speed,
 					(TickType_t ) portMAX_DELAY);
@@ -156,7 +164,15 @@ void speed_controller(void *p) {
 }
 
 void UARTCommunication(void *p) {
+	const TickType_t xFrequency = 1000;
+	TickType_t xLastWakeTime = xTaskGetTickCount();
 
+	//	Serial.print("PTTM: ");
+	//	Serial.println(pttm_reading);
+	//	Serial.print("Safe: ");
+	//	Serial.println(safe_speed);
+	//	Serial.print("Speed: ");
+	//	Serial.println(speed);
 }
 
 void accelerator() {
