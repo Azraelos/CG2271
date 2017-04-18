@@ -98,19 +98,6 @@ void setLed(int lightSpeed) {
 	}
 }
 
-void automatedBrake(int flag) {
-	switch (flag) {
-	case (1): {
-		digitalWrite(LED_PIN_4, HIGH);
-		break;
-	}
-	case (0): {
-		digitalWrite(LED_PIN_4, LOW);
-		break;
-	}
-	}
-}
-
 void potentiometer(void *p) {
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -126,10 +113,15 @@ void potentiometer(void *p) {
 	}
 }
 
+void autoBrake() {
+	digitalWrite(LED_PIN_4, HIGH);
+	delay(1000);
+	digitalWrite(LED_PIN_4, LOW);
+}
+
 void speed_controller(void *p) {
 	int speed = 0;
 	int safe_speed;
-	int autoBrake = 0;
 
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
@@ -140,6 +132,8 @@ void speed_controller(void *p) {
 		}
 		if (speed > safe_speed) {
 			speed = safe_speed;
+			autoBrake();
+
 		}
 		if (xSemaphoreTake(xAccelerator, 0) == pdTRUE) {
 			if (speed < 3 && speed < safe_speed) {
@@ -150,7 +144,6 @@ void speed_controller(void *p) {
 		if (xSemaphoreTake(xBrake, 0) == pdTRUE) {
 			if (speed > 0) {
 				speed--;
-				automatedBrake(autoBrake);
 			}
 		}
 
