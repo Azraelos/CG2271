@@ -4,13 +4,17 @@
 #include <task.h>
 #include <semphr.h>
 
-#define STACK_SIZE 200
-#define PIN_PTTM     0
-#define LED_PIN      6
-#define LED_PIN_2    7
-#define LED_PIN_3    8
-#define LED_PIN_4    9  //automated brake
-#define BUZZER      10
+#define STACK_SIZE    100
+#define PIN_PTTM      0
+#define LED_PIN       6
+#define LED_PIN_2     7
+#define LED_PIN_3     8
+#define LED_PIN_4     9  //automated brake
+#define BUZZER        10
+
+#define CURRENT_SPEED 0
+#define SAFE_SPEED    1
+#define DESIRED_SPEED 2
 
 SemaphoreHandle_t xAccelerator;
 SemaphoreHandle_t xBrake;
@@ -18,16 +22,13 @@ SemaphoreHandle_t xBrake;
 QueueHandle_t xSpeed;
 QueueHandle_t xPTTM;
 
-unsigned long debounceTime = 0;
-unsigned long debounceDelay = 200; // the debounce time; increase if the output flickers
-unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long lastDebounceTime2 = 0; // the last time the output pin was toggled
+int speed[3] = {0};
 
 void buzzer(void *p) {
-	const TickType_t xFrequency0 = 2;
-	const TickType_t xFrequency1 = 4;
-	const TickType_t xFrequency2 = 6;
-	const TickType_t xFrequency3 = 8;
+	const TickType_t xFrequency0 = 1;
+	const TickType_t xFrequency1 = 2;
+	const TickType_t xFrequency2 = 3;
+	const TickType_t xFrequency3 = 4;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 	int buzzSpeed;
 
@@ -39,30 +40,30 @@ void buzzer(void *p) {
 		switch (buzzSpeed) {
 		case (0): {
 			digitalWrite(BUZZER, HIGH);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency0 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency0);
 			digitalWrite(BUZZER, LOW);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency0 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency0);
 			break;
 		}
 		case (1): {
 			digitalWrite(BUZZER, HIGH);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency1 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency1);
 			digitalWrite(BUZZER, LOW);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency1 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency1);
 			break;
 		}
 		case (2): {
 			digitalWrite(BUZZER, HIGH);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency2 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency2);
 			digitalWrite(BUZZER, LOW);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency2 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency2);
 			break;
 		}
 		case (3): {
 			digitalWrite(BUZZER, HIGH);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency3 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency3);
 			digitalWrite(BUZZER, LOW);
-			vTaskDelayUntil(&xLastWakeTime, xFrequency3 / 2);
+			vTaskDelayUntil(&xLastWakeTime, xFrequency3);
 			break;
 		}
 		}
@@ -114,44 +115,42 @@ void potentiometer(void *p) {
 }
 
 void autoBrake() {
+	const TickType_t xFrequency = 500;
+	TickType_t xLastWakeTime = xTaskGetTickCount();
+
 	digitalWrite(LED_PIN_4, HIGH);
-	delay(1000);
+	vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	digitalWrite(LED_PIN_4, LOW);
 }
 
 void speed_controller(void *p) {
-	int speed = 0;
-	int safe_speed;
-
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	for (;;) {
 		if (xPTTM != 0) {
-			xQueueReceive(xPTTM, &(safe_speed), (TickType_t ) 0);
-		}
-		if (speed > safe_speed) {
-			speed = safe_speed;
-			autoBrake();
-
+			xQueueReceive(xPTTM, &(speed[SAFE_SPEED]), (TickType_t ) 0);
 		}
 		if (xSemaphoreTake(xAccelerator, 0) == pdTRUE) {
-			if (speed < 3 && speed < safe_speed) {
-				speed++;
+			if (speed[DESIRED_SPEED] < 3) {
+				speed[DESIRED_SPEED]++;
 			}
-
 		}
 		if (xSemaphoreTake(xBrake, 0) == pdTRUE) {
-			if (speed > 0) {
-				speed--;
+			if (speed[DESIRED_SPEED] > 0) {
+				speed[DESIRED_SPEED]--;
 			}
 		}
-
-		if (xSpeed != 0) {
-			xQueueSend(xSpeed, (void * ) &speed,
-					(TickType_t ) portMAX_DELAY);
+		if (speed[DESIRED_SPEED] > speed[SAFE_SPEED]) {
+			speed[CURRENT_SPEED] = speed[SAFE_SPEED];
+			autoBrake();
+		} else {
+			speed[CURRENT_SPEED] = speed[DESIRED_SPEED];
 		}
-		setLed(speed);
+		if (xSpeed != 0) {
+			xQueueSend(xSpeed, (void *) &speed, (TickType_t) portMAX_DELAY);
+		}
+		setLed(speed[CURRENT_SPEED]);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
 }
@@ -159,16 +158,37 @@ void speed_controller(void *p) {
 void UARTCommunication(void *p) {
 	const TickType_t xFrequency = 1000;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
-
-	//	Serial.print("PTTM: ");
-	//	Serial.println(pttm_reading);
-	//	Serial.print("Safe: ");
-	//	Serial.println(safe_speed);
-	//	Serial.print("Speed: ");
-	//	Serial.println(speed);
+	for (;;) {
+		if (xSpeed != 0) {
+			xQueueReceive(xSpeed, &(speed), (TickType_t) 0);
+		}
+		Serial.print(F("Desired Speed: "));
+		Serial.print(speed[DESIRED_SPEED]);
+		Serial.print(F("    Current Speed: "));
+		Serial.print(speed[CURRENT_SPEED]);
+		Serial.println();
+		Serial.print(F("Distance from vehicle in front: "));
+		if (speed[SAFE_SPEED] == 0) {
+			Serial.println(F("d"));
+		} else if (speed[SAFE_SPEED] == 1) {
+			Serial.println(F("2d"));
+		} else if (speed[SAFE_SPEED] == 2) {
+			Serial.println(F("3d"));
+		} else if (speed[SAFE_SPEED] == 3) {
+			Serial.println(F("4d"));
+		}
+		for (int i = 0; i < 13; i++) {
+			Serial.println();
+		}
+		vTaskDelayUntil(&xLastWakeTime, xFrequency);
+	}
 }
 
 void accelerator() {
+	unsigned long debounceTime = 0;
+	unsigned long debounceDelay = 200; // the debounce time; increase if the output flickers
+	unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+
 	static BaseType_t xHigherPriorityTaskWoken;
 	debounceTime = millis();
 	xHigherPriorityTaskWoken = pdFALSE;
@@ -183,12 +203,16 @@ void accelerator() {
 }
 
 void brake() {
+	unsigned long debounceTime = 0;
+	unsigned long debounceDelay = 200; // the debounce time; increase if the output flickers
+	unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
+
 	static BaseType_t xHigherPriorityTaskWoken;
 	debounceTime = millis();
 	xHigherPriorityTaskWoken = pdFALSE;
 	// If interrupts come faster than 20ms, assume it's a bounce and ignore
-	if (debounceTime - lastDebounceTime2 > debounceDelay) {
-		lastDebounceTime2 = debounceTime;
+	if (debounceTime - lastDebounceTime > debounceDelay) {
+		lastDebounceTime = debounceTime;
 		xSemaphoreGiveFromISR(xBrake, &xHigherPriorityTaskWoken);
 	}
 	if (xHigherPriorityTaskWoken == pdTRUE) {
@@ -213,11 +237,12 @@ void setup() {
 }
 
 void loop() {
-	/* create two tasks one with higher priority than the other */
-	xTaskCreate(buzzer, "buzzer", STACK_SIZE, NULL, 1, NULL);
+	xTaskCreate(UARTCommunication, "uart_communication", STACK_SIZE,
+			NULL, 1, NULL);
+	xTaskCreate(buzzer, "buzzer", STACK_SIZE, NULL, 2, NULL);
 	xTaskCreate(speed_controller, "speed_controller", STACK_SIZE, NULL,
-			2, NULL);
-	xTaskCreate(potentiometer, "potentiometer", STACK_SIZE, NULL, 3,
+			3, NULL);
+	xTaskCreate(potentiometer, "potentiometer", STACK_SIZE, NULL, 4,
 			NULL);
 	/* start scheduler */
 	vTaskStartScheduler();
