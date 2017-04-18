@@ -115,7 +115,7 @@ void potentiometer(void *p) {
 }
 
 void autoBrake() {
-	const TickType_t xFrequency = 500;
+	const TickType_t xFrequency = 1000;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	digitalWrite(LED_PIN_4, HIGH);
@@ -126,6 +126,8 @@ void autoBrake() {
 void speed_controller(void *p) {
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
+
+	int autoBrakeFlag = 0;
 
 	for (;;) {
 		if (xPTTM != 0) {
@@ -143,9 +145,13 @@ void speed_controller(void *p) {
 		}
 		if (speed[DESIRED_SPEED] > speed[SAFE_SPEED]) {
 			speed[CURRENT_SPEED] = speed[SAFE_SPEED];
-			autoBrake();
+			if (autoBrakeFlag == 0) {
+				autoBrake();
+				autoBrakeFlag = 1;
+			}
 		} else {
 			speed[CURRENT_SPEED] = speed[DESIRED_SPEED];
+			autoBrakeFlag = 0;
 		}
 		if (xSpeed != 0) {
 			xQueueSend(xSpeed, (void *) &speed, (TickType_t) portMAX_DELAY);
@@ -164,8 +170,11 @@ void UARTCommunication(void *p) {
 		}
 		Serial.print(F("Desired Speed: "));
 		Serial.print(speed[DESIRED_SPEED]);
-		Serial.print(F("    Current Speed: "));
+		Serial.print(F("   Current Speed: "));
 		Serial.print(speed[CURRENT_SPEED]);
+		Serial.println();
+		Serial.print(F("Safe Speed to adhere: "));
+		Serial.print(speed[SAFE_SPEED]);
 		Serial.println();
 		Serial.print(F("Distance from vehicle in front: "));
 		if (speed[SAFE_SPEED] == 0) {
@@ -176,9 +185,6 @@ void UARTCommunication(void *p) {
 			Serial.println(F("3d"));
 		} else if (speed[SAFE_SPEED] == 3) {
 			Serial.println(F("4d"));
-		}
-		for (int i = 0; i < 13; i++) {
-			Serial.println();
 		}
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
@@ -238,7 +244,7 @@ void setup() {
 
 void loop() {
 	xTaskCreate(UARTCommunication, "uart_communication", STACK_SIZE,
-			NULL, 1, NULL);
+			NULL, 2, NULL);
 	xTaskCreate(buzzer, "buzzer", STACK_SIZE, NULL, 2, NULL);
 	xTaskCreate(speed_controller, "speed_controller", STACK_SIZE, NULL,
 			3, NULL);
