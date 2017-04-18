@@ -4,7 +4,7 @@
 #include <task.h>
 #include <semphr.h>
 
-#define STACK_SIZE 200
+#define STACK_SIZE 100
 #define PIN_PTTM     0
 #define LED_PIN      6
 #define LED_PIN_2    7
@@ -23,11 +23,15 @@ unsigned long debounceDelay = 200; // the debounce time; increase if the output 
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long lastDebounceTime2 = 0; // the last time the output pin was toggled
 
+int speed = 0;
+int safe_speed = 0;
+int pttm_reading = 0;
+
 void buzzer(void *p) {
-	const TickType_t xFrequency0 = 2;
-	const TickType_t xFrequency1 = 4;
-	const TickType_t xFrequency2 = 6;
-	const TickType_t xFrequency3 = 8;
+	const TickType_t xFrequency0 = 3.830;
+	const TickType_t xFrequency1 = 3.400;
+	const TickType_t xFrequency2 = 3.038;
+	const TickType_t xFrequency3 = 2.864;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 	int buzzSpeed;
 
@@ -101,7 +105,6 @@ void setLed(int lightSpeed) {
 void potentiometer(void *p) {
 	const TickType_t xFrequency = 500;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
-	int pttm_reading = 0;
 
 	for (;;) {
 		pttm_reading = analogRead(PIN_PTTM) / 256;
@@ -109,19 +112,20 @@ void potentiometer(void *p) {
 			xQueueSend(xPTTM, (void * ) &pttm_reading,
 					(TickType_t ) portMAX_DELAY);
 		}
-		Serial.println("safe: " + pttm_reading);
+		Serial.print("Safe Speed: ");
+		Serial.println(pttm_reading);
+		delay(50);
 		vTaskDelayUntil(&xLastWakeTime, xFrequency);
 	}
 }
 
 void speed_controller(void *p) {
-	int speed = 0;
-	int safe_speed;
 
 	const TickType_t xFrequency = 1100;
 	TickType_t xLastWakeTime = xTaskGetTickCount();
 
 	for (;;) {
+		xSemaphoreTake(xAccelerator, portMAX_DELAY);
 		if (xPTTM != 0) {
 			xQueueReceive(xPTTM, &(safe_speed), (TickType_t ) 0);
 		}
@@ -139,7 +143,9 @@ void speed_controller(void *p) {
 				speed--;
 			}
 		}
-		Serial.println("speed: " + speed);
+		Serial.print("Speed: ");
+		Serial.println(speed);
+		delay(50);
 		if (xSpeed != 0) {
 			xQueueSend(xSpeed, (void * ) &speed,
 					(TickType_t ) portMAX_DELAY);
@@ -189,12 +195,12 @@ void setup() {
 	pinMode(LED_PIN_4, OUTPUT);
 	pinMode(BUZZER, OUTPUT);
 	attachInterrupt(digitalPinToInterrupt(2), accelerator, RISING);
-	attachInterrupt(digitalPinToInterrupt(2), brake, RISING);
+	attachInterrupt(digitalPinToInterrupt(3), brake, RISING);
 
 	xAccelerator = xSemaphoreCreateBinary();
 	xBrake = xSemaphoreCreateBinary();
-	xSpeed = xQueueCreate(10, sizeof(int));
-	xPTTM = xQueueCreate(10, sizeof(int));
+	xSpeed = xQueueCreate(3, sizeof(int));
+	xPTTM = xQueueCreate(3, sizeof(int));
 }
 
 void loop() {
