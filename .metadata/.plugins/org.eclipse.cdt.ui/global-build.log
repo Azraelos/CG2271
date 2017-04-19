@@ -1,4 +1,10 @@
-12:57:36 **** Build of configuration Release for project Lab54 ****
+12:17:11 **** Clean-only build of configuration Release for project Lab6 ****
+make clean 
+arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
+arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
+rm -rf  Lab6.lss  ./arduino/WInterrupts.d ./arduino/hooks.d ./arduino/wiring.d ./arduino/wiring_analog.d ./arduino/wiring_digital.d ./arduino/wiring_pulse.d ./arduino/wiring_shift.d  Lab6.hex  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  Lab6.eep  sizedummy  ./arduino/wiring_pulse.d  ./arduino/CDC.d ./arduino/HardwareSerial.d ./arduino/HardwareSerial0.d ./arduino/HardwareSerial1.d ./arduino/HardwareSerial2.d ./arduino/HardwareSerial3.d ./arduino/IPAddress.d ./arduino/PluggableUSB.d ./arduino/Print.d ./arduino/Stream.d ./arduino/Tone.d ./arduino/USBCore.d ./arduino/WMath.d ./arduino/WString.d ./arduino/abi.d ./arduino/main.d ./arduino/new.d  ./test.d  Lab6.elf
+ 
+12:17:27 **** Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -125,31 +131,541 @@ Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/ard
 Building file: ../test.cpp
 Invoking: AVR C++ Compiler
 avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-In file included from ../test.cpp:5:0:
-../test.cpp: In function 'void setup()':
-../test.cpp:68:17: error: 'xSemaphore2' was not declared in this scope
-  xSemaphoreGive(xSemaphore2);
-                 ^
-C:\Users\Andrew\workspace_c++\freeRTOS\Source\include/semphr.h:423:78: note: in definition of macro 'xSemaphoreGive'
- #define xSemaphoreGive( xSemaphore )  xQueueGenericSend( ( QueueHandle_t ) ( xSemaphore ), NULL, semGIVE_BLOCK_TIME, queueSEND_TO_BACK )
-                                                                              ^
-make: *** [test.o] Error 1
-12:46:38 **** Build of configuration Release for project Lab6 ****
+Finished building: ../test.cpp
+ 
+Building target: Lab6.elf
+Invoking: AVR C++ Linker
+avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
+Finished building target: Lab6.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Lab6.elf  >"Lab6.lss"
+Finished building: Lab6.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
+Finished building: Lab6.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
+Finished building: Lab6.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Lab6.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:   10128 bytes (30.9% Full)
+(.text + .data + .bootloader)
+
+Data:       2010 bytes (98.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:17:36 **** Incremental Build of configuration Release for project freeRTOS ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:21:33 **** Incremental Build of configuration Release for project Lab6 ****
+make all 
+arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
+arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/CDC.d" -MT"arduino/CDC.o" -c -o "arduino/CDC.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial.d" -MT"arduino/HardwareSerial.o" -c -o "arduino/HardwareSerial.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial0.d" -MT"arduino/HardwareSerial0.o" -c -o "arduino/HardwareSerial0.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial1.d" -MT"arduino/HardwareSerial1.o" -c -o "arduino/HardwareSerial1.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial2.d" -MT"arduino/HardwareSerial2.o" -c -o "arduino/HardwareSerial2.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial3.d" -MT"arduino/HardwareSerial3.o" -c -o "arduino/HardwareSerial3.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/IPAddress.d" -MT"arduino/IPAddress.o" -c -o "arduino/IPAddress.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/PluggableUSB.d" -MT"arduino/PluggableUSB.o" -c -o "arduino/PluggableUSB.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Print.d" -MT"arduino/Print.o" -c -o "arduino/Print.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Stream.d" -MT"arduino/Stream.o" -c -o "arduino/Stream.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Tone.d" -MT"arduino/Tone.o" -c -o "arduino/Tone.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/USBCore.d" -MT"arduino/USBCore.o" -c -o "arduino/USBCore.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WInterrupts.d" -MT"arduino/WInterrupts.o" -c -o "arduino/WInterrupts.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WMath.d" -MT"arduino/WMath.o" -c -o "arduino/WMath.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WString.d" -MT"arduino/WString.o" -c -o "arduino/WString.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/abi.d" -MT"arduino/abi.o" -c -o "arduino/abi.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/hooks.d" -MT"arduino/hooks.o" -c -o "arduino/hooks.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/main.d" -MT"arduino/main.o" -c -o "arduino/main.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/new.d" -MT"arduino/new.o" -c -o "arduino/new.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring.d" -MT"arduino/wiring.o" -c -o "arduino/wiring.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_analog.d" -MT"arduino/wiring_analog.o" -c -o "arduino/wiring_analog.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_digital.d" -MT"arduino/wiring_digital.o" -c -o "arduino/wiring_digital.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_pulse.d" -MT"arduino/wiring_pulse.o" -c -o "arduino/wiring_pulse.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_shift.d" -MT"arduino/wiring_shift.o" -c -o "arduino/wiring_shift.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c
+ 
+Building file: ../test.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
+Finished building: ../test.cpp
+ 
+Building target: Lab6.elf
+Invoking: AVR C++ Linker
+avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
+Finished building target: Lab6.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Lab6.elf  >"Lab6.lss"
+Finished building: Lab6.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
+Finished building: Lab6.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
+Finished building: Lab6.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Lab6.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:   10156 bytes (31.0% Full)
+(.text + .data + .bootloader)
+
+Data:       2010 bytes (98.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:21:38 **** Incremental Build of configuration Release for project freeRTOS ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:37:06 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
 Building file: ../test.cpp
 Invoking: AVR C++ Compiler
 avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-../test.cpp: In function 'void speed(void*)':
-../test.cpp:104:19: error: 'void speed(void*)' redeclared as different kind of symbol
- void speed(void *p) {
-                   ^
-../test.cpp:23:5: note: previous declaration 'int speed'
- int speed = 3;
+../test.cpp: In function 'void speed_controller(void*)':
+../test.cpp:131:6: warning: variable 'hasDecreased' set but not used [-Wunused-but-set-variable]
+  int hasDecreased = 0;
+      ^
+Finished building: ../test.cpp
+ 
+Building target: Lab6.elf
+Invoking: AVR C++ Linker
+avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
+Finished building target: Lab6.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Lab6.elf  >"Lab6.lss"
+Finished building: Lab6.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
+Finished building: Lab6.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
+Finished building: Lab6.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p Lab6.elf
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:   10146 bytes (31.0% Full)
+(.text + .data + .bootloader)
+
+Data:       2010 bytes (98.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:37:08 **** Incremental Build of configuration Release for project freeRTOS ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+AVR Memory Usage
+----------------
+Device: atmega328p
+
+Program:       0 bytes (0.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+12:37:12 **** Incremental Build of configuration Release for project Lab6 ****
+make all 
+arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
+arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
+Building file: ../test.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
+../test.cpp: In function 'void speed_controller(void*)':
+../test.cpp:146:5: error: 'hasDecreased' was not declared in this scope
+     hasDecreased = 1;
      ^
 make: *** [test.o] Error 1
-12:46:44 **** Build of configuration Release for project freeRTOS ****
+12:37:13 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -243,7 +759,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-12:47:02 **** Incremental Build of configuration Release for project Lab6 ****
+12:37:17 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -275,16 +791,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    7292 bytes (22.3% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1952 bytes (95.3% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-12:47:06 **** Incremental Build of configuration Release for project freeRTOS ****
+12:37:18 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -378,7 +894,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-12:47:30 **** Incremental Build of configuration Release for project Lab6 ****
+12:39:14 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -410,16 +926,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    7292 bytes (22.3% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1952 bytes (95.3% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-12:47:32 **** Incremental Build of configuration Release for project freeRTOS ****
+12:39:16 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -513,7 +1029,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-12:47:47 **** Incremental Build of configuration Release for project Lab6 ****
+12:39:28 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -545,16 +1061,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    7292 bytes (22.3% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1952 bytes (95.3% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-12:47:49 **** Incremental Build of configuration Release for project freeRTOS ****
+12:39:29 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -648,7 +1164,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-12:48:01 **** Incremental Build of configuration Release for project Lab6 ****
+12:42:06 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -680,16 +1196,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    7290 bytes (22.2% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1952 bytes (95.3% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-12:48:02 **** Incremental Build of configuration Release for project freeRTOS ****
+12:42:07 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -783,7 +1299,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-13:46:48 **** Incremental Build of configuration Release for project Lab6 ****
+12:46:14 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -815,16 +1331,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    9550 bytes (29.1% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1986 bytes (97.0% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-13:46:50 **** Incremental Build of configuration Release for project freeRTOS ****
+12:46:15 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -918,7 +1434,7 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-13:50:09 **** Incremental Build of configuration Release for project Lab6 ****
+12:47:17 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
@@ -950,16 +1466,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:    9550 bytes (29.1% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1986 bytes (97.0% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-13:50:11 **** Incremental Build of configuration Release for project freeRTOS ****
+12:47:18 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -1053,10 +1569,130 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-13:52:45 **** Incremental Build of configuration Release for project Lab6 ****
+12:48:44 **** Incremental Build of configuration Release for project Lab6 ****
 make all 
 arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
 arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/CDC.d" -MT"arduino/CDC.o" -c -o "arduino/CDC.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/CDC.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial.d" -MT"arduino/HardwareSerial.o" -c -o "arduino/HardwareSerial.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial0.d" -MT"arduino/HardwareSerial0.o" -c -o "arduino/HardwareSerial0.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial0.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial1.d" -MT"arduino/HardwareSerial1.o" -c -o "arduino/HardwareSerial1.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial1.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial2.d" -MT"arduino/HardwareSerial2.o" -c -o "arduino/HardwareSerial2.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial2.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/HardwareSerial3.d" -MT"arduino/HardwareSerial3.o" -c -o "arduino/HardwareSerial3.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/HardwareSerial3.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/IPAddress.d" -MT"arduino/IPAddress.o" -c -o "arduino/IPAddress.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/IPAddress.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/PluggableUSB.d" -MT"arduino/PluggableUSB.o" -c -o "arduino/PluggableUSB.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/PluggableUSB.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Print.d" -MT"arduino/Print.o" -c -o "arduino/Print.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Print.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Stream.d" -MT"arduino/Stream.o" -c -o "arduino/Stream.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Stream.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/Tone.d" -MT"arduino/Tone.o" -c -o "arduino/Tone.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/Tone.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/USBCore.d" -MT"arduino/USBCore.o" -c -o "arduino/USBCore.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/USBCore.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WInterrupts.d" -MT"arduino/WInterrupts.o" -c -o "arduino/WInterrupts.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WInterrupts.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WMath.d" -MT"arduino/WMath.o" -c -o "arduino/WMath.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WMath.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/WString.d" -MT"arduino/WString.o" -c -o "arduino/WString.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/WString.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/abi.d" -MT"arduino/abi.o" -c -o "arduino/abi.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/abi.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/hooks.d" -MT"arduino/hooks.o" -c -o "arduino/hooks.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/hooks.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/main.d" -MT"arduino/main.o" -c -o "arduino/main.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/main.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/new.d" -MT"arduino/new.o" -c -o "arduino/new.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/new.cpp
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring.d" -MT"arduino/wiring.o" -c -o "arduino/wiring.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_analog.d" -MT"arduino/wiring_analog.o" -c -o "arduino/wiring_analog.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_analog.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_digital.d" -MT"arduino/wiring_digital.o" -c -o "arduino/wiring_digital.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_digital.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_pulse.d" -MT"arduino/wiring_pulse.o" -c -o "arduino/wiring_pulse.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_pulse.c
+ 
+Building file: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c
+Invoking: AVR Compiler
+avr-gcc -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"arduino/wiring_shift.d" -MT"arduino/wiring_shift.o" -c -o "arduino/wiring_shift.o" "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c"
+Finished building: C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino/wiring_shift.c
+ 
 Building file: ../test.cpp
 Invoking: AVR C++ Compiler
 avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
@@ -1085,691 +1721,16 @@ AVR Memory Usage
 ----------------
 Device: atmega328p
 
-Program:   10978 bytes (33.5% Full)
+Program:   10146 bytes (31.0% Full)
 (.text + .data + .bootloader)
 
-Data:       1994 bytes (97.4% Full)
+Data:       2010 bytes (98.1% Full)
 (.data + .bss + .noinit)
 
 
 Finished building: sizedummy
  
-13:52:47 **** Incremental Build of configuration Release for project freeRTOS ****
-make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:53:38 **** Incremental Build of configuration Release for project Lab6 ****
-make all 
-arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
-arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
-Building file: ../test.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab6.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab6.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab6.elf  >"Lab6.lss"
-Finished building: Lab6.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
-Finished building: Lab6.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
-Finished building: Lab6.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab6.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:    9768 bytes (29.8% Full)
-(.text + .data + .bootloader)
-
-Data:       2000 bytes (97.7% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:53:39 **** Incremental Build of configuration Release for project freeRTOS ****
-make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:56:01 **** Incremental Build of configuration Release for project Lab6 ****
-make all 
-arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
-arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
-Building file: ../test.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab6.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab6.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab6.elf  >"Lab6.lss"
-Finished building: Lab6.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
-Finished building: Lab6.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
-Finished building: Lab6.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab6.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:    9646 bytes (29.4% Full)
-(.text + .data + .bootloader)
-
-Data:       2016 bytes (98.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:56:02 **** Incremental Build of configuration Release for project freeRTOS ****
-make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:58:02 **** Incremental Build of configuration Release for project Lab6 ****
-make all 
-arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
-arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
-Building file: ../test.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab6.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab6.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab6.elf  >"Lab6.lss"
-Finished building: Lab6.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
-Finished building: Lab6.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
-Finished building: Lab6.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab6.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:    9678 bytes (29.5% Full)
-(.text + .data + .bootloader)
-
-Data:       2016 bytes (98.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:58:03 **** Incremental Build of configuration Release for project freeRTOS ****
-make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:58:46 **** Incremental Build of configuration Release for project Lab6 ****
-make all 
-arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
-arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
-Building file: ../test.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab6.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab6.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab6.elf  >"Lab6.lss"
-Finished building: Lab6.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
-Finished building: Lab6.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
-Finished building: Lab6.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab6.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:    9678 bytes (29.5% Full)
-(.text + .data + .bootloader)
-
-Data:       2016 bytes (98.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:58:47 **** Incremental Build of configuration Release for project freeRTOS ****
-make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:       0 bytes (0.0% Full)
-(.text + .data + .bootloader)
-
-Data:          0 bytes (0.0% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:59:35 **** Incremental Build of configuration Release for project Lab6 ****
-make all 
-arduino/subdir.mk:258: warning: overriding commands for target `arduino/wiring_pulse.o'
-arduino/subdir.mk:251: warning: ignoring old commands for target `arduino/wiring_pulse.o'
-Building file: ../test.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino" -I"C:\Users\Andrew\workspace_c++\freeRTOS\Source\include" -I"C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega328p -DF_CPU=16000000UL -MMD -MP -MF"test.d" -MT"test.o" -c -o "test.o" "../test.cpp"
-Finished building: ../test.cpp
- 
-Building target: Lab6.elf
-Invoking: AVR C++ Linker
-avr-g++ -Wl,-Map,Lab6.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab6.elf"  ./arduino/CDC.o ./arduino/HardwareSerial.o ./arduino/HardwareSerial0.o ./arduino/HardwareSerial1.o ./arduino/HardwareSerial2.o ./arduino/HardwareSerial3.o ./arduino/IPAddress.o ./arduino/PluggableUSB.o ./arduino/Print.o ./arduino/Stream.o ./arduino/Tone.o ./arduino/USBCore.o ./arduino/WInterrupts.o ./arduino/WMath.o ./arduino/WString.o ./arduino/abi.o ./arduino/hooks.o ./arduino/main.o ./arduino/new.o ./arduino/wiring.o ./arduino/wiring_analog.o ./arduino/wiring_digital.o ./arduino/wiring_pulse.o ./arduino/wiring_shift.o  ./test.o  C:/Users/Andrew/workspace_c++/freeRTOS/Release/libfreeRTOS.a 
-Finished building target: Lab6.elf
- 
-Invoking: AVR Create Extended Listing
-avr-objdump -h -S Lab6.elf  >"Lab6.lss"
-Finished building: Lab6.lss
- 
-Create Flash image (ihex format)
-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab6.elf  "Lab6.hex"
-Finished building: Lab6.hex
- 
-Create eeprom image (ihex format)
-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Lab6.elf  "Lab6.eep"
-Finished building: Lab6.eep
- 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega328p Lab6.elf
-AVR Memory Usage
-----------------
-Device: atmega328p
-
-Program:    9678 bytes (29.5% Full)
-(.text + .data + .bootloader)
-
-Data:       2016 bytes (98.4% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
-13:59:36 **** Incremental Build of configuration Release for project freeRTOS ****
+12:48:49 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a

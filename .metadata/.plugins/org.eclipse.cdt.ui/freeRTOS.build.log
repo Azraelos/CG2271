@@ -1,4 +1,4 @@
-13:59:36 **** Incremental Build of configuration Release for project freeRTOS ****
+12:48:49 **** Incremental Build of configuration Release for project freeRTOS ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega328p libfreeRTOS.a
@@ -93,5 +93,5 @@ Data:          0 bytes (0.0% Full)
 Finished building: sizedummy
  
 
-13:59:37 Build Finished (took 291ms)
+12:48:49 Build Finished (took 291ms)
 
